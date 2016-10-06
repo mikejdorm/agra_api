@@ -64,11 +64,11 @@ soil type, and the cooridinates for creating the polynomial"
       end
 
 @doc "Processes the XML response returned from the Soil Access Web Service and
-    returns a map structure which can be encoded into JSON.
+    returns a map structure which can be encoded into JSON."
       def process_response(response) do
          %{area_of_interest: response.body
-                       |> xpath(~x"//gml:boundedBy/gml:Box/gml:coordinates/text()")
-                       |> parse_coordinates,
+         |> xpath(~x"//gml:boundedBy/gml:Box/gml:coordinates/text()")
+         |> parse_coordinates,
             features: response.body
                        |> parse_xml_fields
                        |> reformat_features}
